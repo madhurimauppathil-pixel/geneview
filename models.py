@@ -3,8 +3,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
+import os
 
-DATABASE_URL = "postgresql://postgres:admin123@localhost/dna_viewer"
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:admin123@localhost/dna_viewer")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
